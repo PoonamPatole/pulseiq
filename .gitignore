@@ -1,0 +1,25 @@
+# Python virtual environments
+.venv/
+venv/
+env/
+
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+
+# Generated DuckDB database files
+*.duckdb
+*.duckdb.wal
+
+# Validation answer keys are for local checking only
+/data/04_Validation_Vault/
+
+# Local environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+.vscode/
