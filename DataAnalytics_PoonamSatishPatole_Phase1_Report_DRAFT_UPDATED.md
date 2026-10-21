@@ -3,8 +3,9 @@
 **Name:** Poonam Satish Patole  
 **Track:** Data Analysts  
 **Phase:** Phase 1  
-**GitHub repository:** `[ADD PRIVATE pulseiq REPOSITORY LINK AFTER PUSHING]`  
-**Git tag:** `phase-1` `[CREATE AND PUSH AFTER GIT SETUP]`
+**Prepared:** 23 October 2026  
+**GitHub repository:** [PoonamPatole/pulseiq](https://github.com/PoonamPatole/pulseiq)  
+**Git tag:** `phase-1`
 
 ## Task status and evidence
 
@@ -22,7 +23,7 @@
 - Task 1 rerun verification compared raw, clean, summary, and quarantine contents across two consecutive runs: all 54 materialized tables were stable. The audit run log and DQ result timestamps intentionally change on each run.
 - All 12 warehouse facts reconcile to Task 1 passed counts. Task 1 quarantines 20 bad `fact_task` rows with a written reason; the other fact tables have no quarantined rows.
 - The 14-check gatekeeper detects all 11 planted issue categories. The supplied data currently produces five Critical DQ checks with findings, so the ETL command intentionally exits with code 1 after saving its audit results. This is a data-quality gate failure, not a load crash.
-- The Streamlit app test reports zero exceptions, four KPI cards, four charts, one department selector, and one date-range control. September 2026 headcount is 441 and M29 month-over-month growth is +3.28%.
+- The Streamlit app test reports zero exceptions, four KPI cards, four charts, one department selector, and one date-range control. September 2026 headcount is 441 and M29 month-over-month growth is +3.28%. Dashboard screenshots are included in `task_5/evidence/` and in this report.
 - M28 forecast error is `NULL` with `NO_ACTUALS_YET` because actual values for forecast months are not supplied.
 
 ## What I learned
@@ -39,14 +40,13 @@ Metric views give dashboards one reusable definition for each business number.
 - CSV type inference initially treated numeric-looking text identifiers as numbers. The pipeline converts those values only in `clean`; the raw source remains unchanged.
 - The quality gate finds existing payroll, key, history, and minimum-group-size issues. They are recorded in `audit.dq_results` and quarantines rather than removed silently.
 - The dataset has 261 explainable relationship exceptions: employee history date gaps, forecast dates beyond the supplied calendar, and two payroll rows with employee key `-1`.
-- A browser screenshot is still needed. The headless browser in this environment did not finish the Streamlit browser connection, so I have not included a fabricated screenshot.
+- The saved dashboard screenshots show the KPI row, trend, filters, and workforce breakdown charts.
 
 ## Plan for Phase 2
 
 Resolve or formally accept the Critical data-quality findings with documented owners. Then extend the dashboard to attendance, attrition, teams, and payroll cost, using the existing governed metric views and preserving small-group privacy thresholds.
 
-## Submission items still to fill
+## Remaining submission steps
 
-1. Create/push the private GitHub repository and add its clickable URL above.
-2. Create and push the `phase-1` tag.
-3. Add the programme GitHub account `fobesitech` as a collaborator, then export the final report PDF and upload it to the programme site.
+1. Add the programme GitHub account `fobesitech` as a collaborator.
+2. Export this updated report as the final PDF and upload it to the programme site.
