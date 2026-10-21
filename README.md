@@ -32,15 +32,15 @@ If `.venv` already exists, skip the first command. All commands below use its Py
 Run these from the project root, in order:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_1\check_row_counts.py
 .\.venv\Scripts\python.exe .\task_1\etl.py
+.\.venv\Scripts\python.exe .\task_1\check_row_counts.py
 .\.venv\Scripts\python.exe .\task_2\build_warehouse.py
 .\.venv\Scripts\python.exe .\task_4\create_metric_views.py
 .\.venv\Scripts\python.exe .\task_5\build_workforce_metrics.py
 .\.venv\Scripts\python.exe -m streamlit run .\task_5\app.py
 ```
 
-The Task 1 ETL currently finds five Critical data-quality checks and may exit with code 1 after it has written the load and audit results. This is the gate's expected response for the supplied data. Review `audit.dq_results`; when running the training dashboard, continue with Tasks 2–5 while treating affected metrics as provisional.
+Run the ETL before the row-count check because the check reads tables from the local DuckDB database. The Task 1 ETL currently finds five Critical data-quality checks and may exit with code 1 after it has written the load and audit results. This is the gate's expected response for the supplied data. Review `audit.dq_results`; when running the training dashboard, continue with Tasks 2–5 while treating affected metrics as provisional.
 
 Streamlit opens the **Workforce and headcount** dashboard in a browser. Use its sidebar to filter the department and month range. The **CEO Questions** page explains the five questions the dashboard addresses.
 
