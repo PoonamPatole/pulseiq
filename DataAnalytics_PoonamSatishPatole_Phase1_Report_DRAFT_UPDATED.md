@@ -46,7 +46,3 @@ Metric views give dashboards one reusable definition for each business number.
 
 Resolve or formally accept the Critical data-quality findings with documented owners. Then extend the dashboard to attendance, attrition, teams, and payroll cost, using the existing governed metric views and preserving small-group privacy thresholds.
 
-## Remaining submission steps
-
-1. Add the programme GitHub account `fobesitech` as a collaborator.
-2. Export this updated report as the final PDF and upload it to the programme site.
