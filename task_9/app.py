@@ -15,7 +15,7 @@ st.caption("Department figures are aggregated totals and averages. No salary det
 def read(sql,params=()):
  with duckdb.connect(str(DB),read_only=True) as c:return c.execute(sql,list(params)).df()
 try:
- data=read("""SELECT p.month_end_date AS month,p.department_id,d.department_name,
+ data=read("""SELECT g.month_end_date AS month,g.department_id,d.department_name,
    g.metric_value AS gross_pay,n.metric_value AS net_pay,e.metric_value AS employer_cost,
    h.metric_value AS cost_per_employee
    FROM metrics.m07_gross_pay g
@@ -23,7 +23,6 @@ try:
    JOIN metrics.m09_employer_payroll_cost e USING(month_end_date,department_id)
    JOIN metrics.m10_cost_per_head h USING(month_end_date,department_id)
    LEFT JOIN warehouse.dim_department d USING(department_id)
-   JOIN warehouse.fact_payroll p ON p.period_end_date=g.month_end_date AND p.department_id=g.department_id
    GROUP BY 1,2,3,4,5,6,7 ORDER BY 1,2""")
 except Exception as e: st.error(f"Build Tasks 1–4 first. {e}"); st.stop()
 depts=sorted(data.department_name.dropna().unique())
