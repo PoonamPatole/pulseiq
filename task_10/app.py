@@ -21,12 +21,12 @@ depts=sorted(budget.department_name.dropna().unique())
 sel=st.sidebar.selectbox("Department",["All reportable departments",*depts])
 shown=budget if sel=="All reportable departments" else budget[budget.department_name==sel]
 top=shown[shown.variance>0].groupby("department_name",as_index=False).variance.sum().sort_values("variance",ascending=False).head(10)
-st.plotly_chart(px.bar(top,x="department_name",y="variance",title="Departments ranked by total overspend (INR)",labels={"variance":"Overspend (INR)"}),use_container_width=True)
+st.plotly_chart(px.bar(top,x="department_name",y="variance",title="Departments ranked by total overspend (INR)",labels={"variance":"Overspend (INR)"}),width="stretch")
 st.subheader("Budget variance detail")
-st.dataframe(shown,hide_index=True,use_container_width=True)
+st.dataframe(shown,hide_index=True,width="stretch")
 st.subheader("KPI scorecard")
 visible=score if sel=="All reportable departments" else score[score.department_name==sel]
-st.dataframe(visible,hide_index=True,use_container_width=True)
+st.dataframe(visible,hide_index=True,width="stretch")
 st.caption("Green means the observed KPI meets its supplied target; red means it misses; no data is not scored. Budget overspend is ranked separately. A missing budget refresh after a hiring freeze should be noted beside the variance and discussed with Finance.")
 st.subheader("Top two overspend recommendations")
 for _,r in top.head(2).iterrows():

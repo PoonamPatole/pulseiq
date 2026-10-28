@@ -20,13 +20,13 @@
 
 The five Streamlit dashboards and their evidence were produced in the local project. The documented checks give these results:
 
-- **Task 6:** with all departments selected, the lowest observed monthly attendance rates were May 2026 at **92.64%**, January 2026 at **93.11%**, and June 2026 at **93.16%**. Overtime and holiday context are recorded alongside the rates; these observations do not establish the cause of an attendance change.
-- **Task 7:** a query matching the dashboard’s monthly department aggregation returned the three largest exit rows: Engineering, Mar 2025, **5 exits / 3.40%**; Operations & IT, Mar 2024, **4 / 13.79%**; and Engineering, Apr 2025, **3 / 2.10%**. Predicted risk is shown separately and grouped to protect small groups.
+- **Task 6:** with all departments selected, the corrected M13 calculation gives the three lowest monthly attendance rates as May 2026 **92.89%**, January 2026 **93.29%**, and April 2026 **93.35%**. It includes the half-day adjustment; overtime and holiday context are recorded alongside the rates.
+- **Task 7:** the dashboard’s selected largest exit rows are Engineering, Mar 2025, **5 exits / 3.40%**; Operations & IT, Mar 2024, **4 / 13.79%**; and Engineering, Mar 2020, **3 / 5.17%**. Predicted risk is shown separately and grouped to protect small groups. Tenure averages use one latest SCD row per employee.
 - **Task 8:** direct checks of `warehouse.fact_task` for sprint SP-01 matched dashboard velocity for both teams: Analytics & BI had **22 completed tasks and 79 points**; Data Platform had **29 completed tasks and 72 points**.
 - **Task 9:** treat payroll figures as **provisional pending Finance review**. The Task 3 payroll-to-ledger comparison (DQ-C01) returns **five mismatched months**. June 2026 is **−INR 18,450** (payroll minus ledger); the other four differences are recorded for investigation. Duplicate employee/run rows and unmatched employee IDs also remain unresolved. The answer key is company-level and does not prove department allocations. No payroll rows were excluded.
 - **Task 10:** three April 2025 hand calculations match dashboard actual-minus-budget variances: Engineering **−INR 1,911,891.25 (−8.19%)**, Product & Design **−INR 461,307.33 (−8.73%)**, and Data & AI **−INR 100,184.00 (−1.32%)**. Negative values indicate underspend.
 
-These are local data checks and manual reconciliations documented with the task evidence. No automated Streamlit app test report is recorded for Tasks 6–10, so the evidence here does not claim one.
+All five Streamlit apps passed a local AppTest smoke run with no app exceptions, and Python compile checks passed. Numeric spot checks are recorded with the task evidence.
 
 ## What I learned
 

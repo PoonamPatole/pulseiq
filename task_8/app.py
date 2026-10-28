@@ -29,11 +29,11 @@ df=read("""SELECT t.team_id,tm.team_name,t.sprint_id,
  GROUP BY 1,2,3 ORDER BY 2""",( ))
 all_sprints=st.checkbox("Compare all sprints",value=False)
 shown=df if all_sprints else df[df.sprint_id==choice]
-st.plotly_chart(px.bar(shown,x="team_name",y="velocity",color="sprint_id",barmode="group",title="Completed story points"),use_container_width=True)
+st.plotly_chart(px.bar(shown,x="team_name",y="velocity",color="sprint_id",barmode="group",title="Completed story points"),width="stretch")
 left,right=st.columns(2)
-left.plotly_chart(px.bar(shown,x="team_name",y="on_time_pct",color="sprint_id",barmode="group",title="On-time delivery (%)"),use_container_width=True)
-right.plotly_chart(px.bar(shown,x="team_name",y="blocked",color="sprint_id",barmode="group",title="Blocked tasks"),use_container_width=True)
-st.dataframe(shown,hide_index=True,use_container_width=True)
+left.plotly_chart(px.bar(shown,x="team_name",y="on_time_pct",color="sprint_id",barmode="group",title="On-time delivery (%)"),width="stretch")
+right.plotly_chart(px.bar(shown,x="team_name",y="blocked",color="sprint_id",barmode="group",title="Blocked tasks"),width="stretch")
+st.dataframe(shown,hide_index=True,width="stretch")
 st.caption("Compare teams with their team size, work type and sprint length in mind. A high velocity alone does not establish team health.")
 st.subheader("Three observations for the selected sprint")
 for col,label,fmt in [("velocity","highest velocity","{:.0f} points"),("cycle_days","longest average cycle","{:.1f} days"),("reopened","most reopened items","{:.0f} reopened")]:
