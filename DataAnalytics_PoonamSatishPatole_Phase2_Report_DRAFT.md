@@ -10,11 +10,11 @@
 
 | Task | Status | Evidence |
 |---|---|---|
-| 6. Attendance and leave | Done locally | Dashboard screenshot and attendance observations |
-| 7. Attrition analytics | Done locally | Dashboard screenshot and three recorded findings |
-| 8. Team productivity | Done locally | Dashboard screenshot and two-team manual verification |
-| 9. Payroll cost and reconciliation | Done locally | Dashboard screenshot and five-month reconciliation |
-| 10. Budget and KPI targets | Done locally | Dashboard screenshot and three manual variance checks |
+| 6. Attendance and leave | Done locally | Dashboard screenshot; [attendance observations](task_6/evidence/insights.md) |
+| 7. Attrition analytics | Done locally | Dashboard screenshot; [three recorded findings](task_7/evidence/findings.md) |
+| 8. Team productivity | Done locally | Dashboard screenshot; [two-team manual verification](task_8/evidence/verification.md) |
+| 9. Payroll cost and reconciliation | Done locally | Dashboard screenshot; [five-month reconciliation](task_9/evidence/exclusions.md) |
+| 10. Budget and KPI targets | Done locally | Dashboard screenshot; [three manual variance checks](task_10/evidence/verification.md) |
 
 ## Proof it works
 
