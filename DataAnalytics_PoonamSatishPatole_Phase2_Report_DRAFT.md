@@ -4,17 +4,17 @@
 **Track:** Data Analysts  
 **Phase:** Phase 2  
 **GitHub repository:** [PoonamPatole/pulseiq](https://github.com/PoonamPatole/pulseiq)  
-**Git tag:** `phase-2` proposed for this submission; the local repository currently has only `phase-1`.
+**Git tag:** Phase-2
 
 ## Task status and evidence
 
 | Task | Status | Evidence |
 |---|---|---|
-| 6. Attendance and leave | Done locally | [Attendance dashboard screenshot](task_6/evidence/Attendance%20and%20Leave.png); [observations and screenshots](task_6/evidence/insights.md) |
-| 7. Attrition analytics | Done locally | [Attrition dashboard screenshot](task_7/evidence/Attrition%20Analytics.png); [three findings and screenshot notes](task_7/evidence/findings.md) |
-| 8. Team productivity | Done locally | [Team productivity screenshot](task_8/evidence/Team%20Productivity.png); [two-team manual verification](task_8/evidence/verification.md) |
-| 9. Payroll cost and reconciliation | Done locally | [Payroll dashboard screenshot](task_9/evidence/Payroll%20cost%20and%20reconciliation.png); [five-month reconciliation and exclusions note](task_9/evidence/exclusions.md) |
-| 10. Budget and KPI targets | Done locally | [Budget and KPI screenshot](task_10/evidence/Budget%20versus%20actual%20and%20KPI%20targets.png); [three manual variance checks](task_10/evidence/verification.md) |
+| 6. Attendance and leave | Done locally | Dashboard screenshot and attendance observations |
+| 7. Attrition analytics | Done locally | Dashboard screenshot and three recorded findings |
+| 8. Team productivity | Done locally | Dashboard screenshot and two-team manual verification |
+| 9. Payroll cost and reconciliation | Done locally | Dashboard screenshot and five-month reconciliation |
+| 10. Budget and KPI targets | Done locally | Dashboard screenshot and three manual variance checks |
 
 ## Proof it works
 
