@@ -2,10 +2,18 @@
 
 ## Findings
 
-The Task 7 dashboard displays the largest monthly department exit counts and their attrition percentages under **Actual exits**. Record three findings from the running app here, including the month, department, exit count, and rate.
+The Task 7 dashboard displays the largest monthly department exit counts and their attrition percentages under **Actual exits**. The three largest rows in the dashboard query are:
+
+| Month | Department | Exits | Attrition rate |
+|---|---|---:|---:|
+| Mar 2025 | Engineering | 5 | 3.40% |
+| Mar 2024 | Operations & IT | 4 | 13.79% |
+| Apr 2025 | Engineering | 3 | 2.10% |
+
+Rates are exits divided by starting headcount for that department and month. The Operations & IT rate is higher despite fewer exits because its starting headcount was smaller. These are observed historical counts and rates, not predictions or explanations of cause.
 
 The **Predicted, not certain** section shows grouped risk estimates separately from actual exits. Do not include individual names or risk scores in evidence.
 
 ## Screenshot
 
-Save a screenshot of the running Task 7 page here before submitting the report. Check that the actual and predicted sections are both visible and that no small group is exposed.
+Screenshots of the running Task 7 page are included as `Attrition Analytics.png` and `3_Findings.png`. The app groups predicted risk and suppresses groups below five people; actual exits remain separate from the prediction section.

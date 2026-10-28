@@ -14,4 +14,4 @@ These observations identify months to review; they do not prove why attendance c
 
 ## Screenshot
 
-Save a screenshot of the running Task 6 page here before submitting the report.
+Screenshots of the running Task 6 page are included in this folder: `Attendance and Leave.png`, `approved leaves.png`, `latearrivals.png`, and `3 Data Observations.png`.
