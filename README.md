@@ -1,4 +1,19 @@
-# PulseIQ Analytics — Phase 1
+# PulseIQ Analytics
+
+## Phase 2
+
+Phase 2 extends the analytics project with dashboards for attendance and leave, attrition, team productivity, payroll reconciliation, and budget and KPI targets (Tasks 6-10).
+
+- **Phase 2 report:** [PDF](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.pdf) | [Markdown](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.md)
+- **Task 6 - Attendance and leave:** [Dashboard](task_6/app.py) | [Findings](task_6/evidence/insights.md)
+- **Task 7 - Attrition analytics:** [Dashboard](task_7/app.py) | [Findings](task_7/evidence/findings.md)
+- **Task 8 - Team productivity:** [Dashboard](task_8/app.py) | [Verification](task_8/evidence/verification.md)
+- **Task 9 - Payroll cost and reconciliation:** [Dashboard](task_9/app.py) | [Reconciliation notes](task_9/evidence/exclusions.md)
+- **Task 10 - Budget and KPI targets:** [Dashboard](task_10/app.py) | [Verification](task_10/evidence/verification.md)
+
+Payroll figures remain provisional pending Finance review, as detailed in the Phase 2 report.
+
+## Phase 1
 
 PulseIQ is a five-task data analytics project that loads source CSVs into DuckDB, validates data quality, builds a star-schema warehouse, creates governed metric views, and presents workforce metrics in a Streamlit dashboard.
 
