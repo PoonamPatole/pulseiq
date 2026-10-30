@@ -1,18 +1,5 @@
 # PulseIQ Analytics
 
-## Phase 2
-
-Phase 2 extends the analytics project with dashboards for attendance and leave, attrition, team productivity, payroll reconciliation, and budget and KPI targets (Tasks 6-10).
-
-- **Phase 2 report:** [PDF](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.pdf) | [Markdown](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.md)
-- **Task 6 - Attendance and leave:** [Dashboard](task_6/app.py) | [Findings](task_6/evidence/insights.md)
-- **Task 7 - Attrition analytics:** [Dashboard](task_7/app.py) | [Findings](task_7/evidence/findings.md)
-- **Task 8 - Team productivity:** [Dashboard](task_8/app.py) | [Verification](task_8/evidence/verification.md)
-- **Task 9 - Payroll cost and reconciliation:** [Dashboard](task_9/app.py) | [Reconciliation notes](task_9/evidence/exclusions.md)
-- **Task 10 - Budget and KPI targets:** [Dashboard](task_10/app.py) | [Verification](task_10/evidence/verification.md)
-
-Payroll figures remain provisional pending Finance review, as detailed in the Phase 2 report.
-
 ## Phase 1
 
 PulseIQ is a five-task data analytics project that loads source CSVs into DuckDB, validates data quality, builds a star-schema warehouse, creates governed metric views, and presents workforce metrics in a Streamlit dashboard.
@@ -117,3 +104,79 @@ Creates dashboard-safe aggregate views and serves a Streamlit app. The Workforce
 - Task-specific notes, diagrams, and evidence are kept in each `task_1` through `task_5` folder.
 
 The supplied training data has unresolved Critical quality findings, including payroll-related issues. The quality gate preserves and reports these findings rather than silently dropping the affected source rows. Treat metrics from affected sources as provisional until the findings are resolved or formally accepted.
+
+## Phase 2
+
+Phase 2 extends the analytics work with five Streamlit dashboards for attendance and leave, attrition, team productivity, payroll reconciliation, and budget and KPI targets. Tasks 6-10 reuse the warehouse and add their own metric preparation, analysis, validation, and evidence.
+
+- **Phase 2 report:** [PDF](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.pdf) | [Markdown](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.md)
+- **Git tag:** `Phase-2`
+- **Task dashboards:** Tasks 6-9 read from the project DuckDB warehouse; Task 10 first builds its budget and target metric views.
+
+## Requirements and setup
+
+Use the Python environment and dependencies described in Phase 1. From the project root, run the Phase 1 data pipeline first so the DuckDB database and warehouse tables are available. Task 10 also requires its own metric build step before its dashboard is launched.
+
+## Build and run the Phase 2 dashboards
+
+Run these from the project root in PowerShell, in order:
+
+```powershell
+.\.venv\Scripts\python.exe -m streamlit run .\task_6\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_7\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_8\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_9\app.py
+.\.venv\Scripts\python.exe .\task_10\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_10\app.py
+```
+
+Each Streamlit command starts one dashboard. Run the Task 10 builder after the Phase 1 warehouse is ready and before launching the Task 10 app.
+
+## The five Phase 2 tasks
+
+### Task 6 - Attendance and leave
+
+Shows attendance rate, late arrivals, overtime, approved leave, and holiday context. Attendance follows the M13 calculation, including half-day adjustments. Leave is shown company-wide because the leave fact has no department key; holidays provide context but do not establish a cause for attendance changes.
+
+- Dashboard: [`task_6/app.py`](task_6/app.py)
+- Findings: [`task_6/evidence/insights.md`](task_6/evidence/insights.md)
+- Dashboard notes: [`task_6/README.md`](task_6/README.md)
+
+### Task 7 - Attrition analytics
+
+Separates actual exits and voluntary exits from grouped predicted risk. Tenure uses the employee SCD version valid on the exit date. Risk groups and tenure summaries are suppressed below five people or exits to protect privacy; individual risk scores are not shown.
+
+- Dashboard: [`task_7/app.py`](task_7/app.py)
+- Findings: [`task_7/evidence/findings.md`](task_7/evidence/findings.md)
+- Dashboard notes: [`task_7/README.md`](task_7/README.md)
+
+### Task 8 - Team productivity
+
+Summarizes task delivery by team and sprint, with completed work, velocity, cycle time, blocked tasks, and reopened items. Cancelled tasks are excluded from active completion denominators. Interpret velocity with team size, sprint length, and work type rather than as a standalone team health score.
+
+- Dashboard: [`task_8/app.py`](task_8/app.py)
+- Manual verification: [`task_8/evidence/verification.md`](task_8/evidence/verification.md)
+- Dashboard notes: [`task_8/README.md`](task_8/README.md)
+
+### Task 9 - Payroll cost and reconciliation
+
+Reports gross pay, net pay, employer cost, cost per employee, and monthly reconciliation against the supplied company-level answer key. Company totals do not validate department allocations. Payroll figures remain provisional pending Finance review: documented issues include duplicate employee/run rows, unmatched employee IDs, and five monthly differences. Source rows are preserved until Finance confirms any corrections.
+
+- Dashboard: [`task_9/app.py`](task_9/app.py)
+- Reconciliation notes: [`task_9/evidence/exclusions.md`](task_9/evidence/exclusions.md)
+- Dashboard notes: [`task_9/README.md`](task_9/README.md)
+
+### Task 10 - Budget and KPI targets
+
+Builds budget and target metric views, then compares actuals with budget and KPI thresholds. Positive budget variance means overspend; percentage variance is divided by budget. Department actuals are shown only for groups with at least five employees. KPI status follows the supplied threshold direction, and missing values are labelled No data.
+
+- Metric builder: [`task_10/build_metrics.py`](task_10/build_metrics.py)
+- Dashboard: [`task_10/app.py`](task_10/app.py)
+- Manual verification: [`task_10/evidence/verification.md`](task_10/evidence/verification.md)
+- Dashboard notes: [`task_10/README.md`](task_10/README.md)
+
+## Phase 2 evidence and outputs
+
+The report records the five task outcomes, validation checks, and analysis limitations. Task-level evidence and screenshots are kept under each `task_6` through `task_10` folder. The dashboards passed local AppTest smoke checks and Python compile checks, with numeric spot checks documented in the task evidence.
+
+Before using payroll results for decisions, complete Finance review of the documented differences and data-quality exceptions. For KPI and budget decisions, verify whether targets and budgets reflect the hiring freeze and current planning assumptions.
