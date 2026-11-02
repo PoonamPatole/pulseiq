@@ -1,0 +1,13 @@
+metric,month,forecast_value,lower_80,upper_80,actual_value,absolute_error,absolute_percentage_error,actual_status
+attrition_rate_monthly_pct,2026-10-01,1.02,0.27,1.77,,,,NO ACTUAL YET
+attrition_rate_monthly_pct,2026-11-01,1.01,0.26,1.76,,,,NO ACTUAL YET
+attrition_rate_monthly_pct,2026-12-01,1.66,0.91,2.41,,,,NO ACTUAL YET
+attrition_rate_monthly_pct,2027-01-01,0.92,0.17,1.67,,,,NO ACTUAL YET
+attrition_rate_monthly_pct,2027-02-01,1.23,0.48,1.98,,,,NO ACTUAL YET
+attrition_rate_monthly_pct,2027-03-01,1.84,1.09,2.59,,,,NO ACTUAL YET
+headcount_end,2026-10-01,426.3,417.5,435.1,,,,NO ACTUAL YET
+headcount_end,2026-11-01,429.7,419.9,439.5,,,,NO ACTUAL YET
+headcount_end,2026-12-01,431.4,420.7,442.2,,,,NO ACTUAL YET
+headcount_end,2027-01-01,436.0,424.4,447.6,,,,NO ACTUAL YET
+headcount_end,2027-02-01,439.7,427.3,452.1,,,,NO ACTUAL YET
+headcount_end,2027-03-01,439.8,426.6,453.0,,,,NO ACTUAL YET
