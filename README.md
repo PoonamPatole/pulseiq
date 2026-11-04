@@ -1,6 +1,6 @@
 # PulseIQ Analytics
 
-## <u>Phase 1</u>
+## <ins>Phase 1</ins>
 
 PulseIQ is a five-task data analytics project that loads source CSVs into DuckDB, validates data quality, builds a star-schema warehouse, creates governed metric views, and presents workforce metrics in a Streamlit dashboard.
 
@@ -105,7 +105,7 @@ Creates dashboard-safe aggregate views and serves a Streamlit app. The Workforce
 
 The supplied training data has unresolved Critical quality findings, including payroll-related issues. The quality gate preserves and reports these findings rather than silently dropping the affected source rows. Treat metrics from affected sources as provisional until the findings are resolved or formally accepted.
 
-## <u>Phase 2</u>
+## <ins>Phase 2</ins>
 
 Phase 2 extends the analytics work with five Streamlit dashboards for attendance and leave, attrition, team productivity, payroll reconciliation, and budget and KPI targets. Tasks 6-10 reuse the warehouse and add their own metric preparation, analysis, validation, and evidence.
 
@@ -181,7 +181,7 @@ The report records the five task outcomes, validation checks, and analysis limit
 
 Before using payroll results for decisions, complete Finance review of the documented differences and data-quality exceptions. For KPI and budget decisions, verify whether targets and budgets reflect the hiring freeze and current planning assumptions.
 
-## <u>Phase 3</u>
+## <ins>Phase 3</ins>
 
 Phase 3 adds five dashboards for P&L and expense analysis, receivables and cash flow, cross-department comparisons, AI anomaly and forecast signals, and an executive company-health scorecard. Tasks 11-15 reuse the DuckDB warehouse and add task-specific metric views, analysis, and evidence.
 
