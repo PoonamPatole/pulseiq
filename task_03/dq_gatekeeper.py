@@ -364,7 +364,7 @@ def main() -> None:
     parser.add_argument("--self-test", action="store_true", help="test every check using scratch table copies")
     args = parser.parse_args()
     if not DB_FILE.exists():
-        raise FileNotFoundError(f"Database not found: {DB_FILE}. Run task_1/etl.py first.")
+        raise FileNotFoundError(f"Database not found: {DB_FILE}. Run task_01/etl.py first.")
 
     con = duckdb.connect(str(DB_FILE))
     con.execute("CREATE SCHEMA IF NOT EXISTS audit")

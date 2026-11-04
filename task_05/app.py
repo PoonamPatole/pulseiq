@@ -47,7 +47,7 @@ try:
         st.stop()
 except Exception as exc:
     st.error(f"Could not read workforce metric views: {exc}")
-    st.info("From the project root, run the Task 4 metric builder and then `python .\\task_5\\build_workforce_metrics.py`.")
+    st.info("From the project root, run the Task 4 metric builder and then `python .\\task_05\\build_workforce_metrics.py`.")
     st.stop()
 
 months = pd.to_datetime(available_months["month_start_date"]).dt.date.tolist()

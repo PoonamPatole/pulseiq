@@ -1,6 +1,6 @@
 # Five metric hand checks
 
-Run `python .\task_4\create_metric_views.py` first. These examples compare simple source components with the reusable view result. Numbers below use the current Task 2 warehouse; values based on facts with unresolved Task 3 failures are provisional.
+Run `python .\task_04\create_metric_views.py` first. These examples compare simple source components with the reusable view result. Numbers below use the current Task 2 warehouse; values based on facts with unresolved Task 3 failures are provisional.
 
 | Metric | Selected group | Source arithmetic | View value | Check |
 |---|---|---:|---:|---|

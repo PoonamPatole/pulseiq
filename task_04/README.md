@@ -3,7 +3,7 @@
 Run from the project root after Tasks 1 and 2 have built the DuckDB database:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_4\create_metric_views.py
+.\.venv\Scripts\python.exe .\task_04\create_metric_views.py
 ```
 
 This creates reusable views for the 28 supplied metrics plus M29, along with supporting aggregate views, in the `metrics` schema and `metrics.metric_catalog` in the project-root `pulseiq.duckdb`. Each metric view includes its date/team/department/account grouping columns and `metric_value`; the helper `group_size` is used to filter small groups and is not exposed in the final view.
@@ -20,7 +20,7 @@ The M28 view currently returns forecast records with `metric_value = NULL` and `
 
 See [metric decisions](docs/metric_decisions.md) and [hand checks](docs/hand_checks.md) for formula choices, privacy thresholds, and the five source-to-view comparisons.
 
-M29, month-over-month headcount growth, was added for the Phase 1 mini-challenge. Its definition and calculator check are in `task_5/docs/mini_challenge.md`.
+M29, month-over-month headcount growth, was added for the Phase 1 mini-challenge. Its definition and calculator check are in `task_05/docs/mini_challenge.md`.
 
 ## Data quality caveat
 

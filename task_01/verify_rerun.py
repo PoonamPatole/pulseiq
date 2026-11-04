@@ -12,7 +12,7 @@ import duckdb
 
 PROJECT_DIR = Path(__file__).resolve().parent.parent
 DB_FILE = PROJECT_DIR / "pulseiq.duckdb"
-ETL_FILE = PROJECT_DIR / "task_1" / "etl.py"
+ETL_FILE = PROJECT_DIR / "task_01" / "etl.py"
 
 
 def snapshot() -> dict[str, tuple[int, str]]:

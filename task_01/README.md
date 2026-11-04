@@ -3,9 +3,9 @@
 Run these commands from the project root (with the project virtual environment active):
 
 ```powershell
-python .\task_1\check_row_counts.py
-python .\task_1\etl.py
-python .\task_1\verify_rerun.py
+python .\task_01\check_row_counts.py
+python .\task_01\etl.py
+python .\task_01\verify_rerun.py
 ```
 
 `check_row_counts.py` compares all CSV row counts with the DuckDB `raw` tables. `etl.py` reloads the CSVs, validates every fact column, writes clean/quarantine/summary tables and a successful-load log to the project-root `pulseiq.duckdb`, then automatically runs the Task 3 quality gatekeeper. Four feeds use the supplied detailed contracts; all fact columns also use the supplied dictionary's type and nullability. The other eight have no supplied allowed-value/business-rule rules, so those are not invented.

@@ -82,8 +82,8 @@ Task 1 supplied detailed contracts for `fact_anomaly`, `fact_attrition_risk`, `f
 From the project root, run Task 1 first, then build the warehouse:
 
 ```powershell
-python .\task_1\etl.py
-python .\task_2\build_warehouse.py
+python .\task_01\etl.py
+python .\task_02\build_warehouse.py
 ```
 
 The warehouse build creates 11 dimensions and 12 facts in the `warehouse` schema. Every table has a primary key. All 12 fact row counts match Task 1's passed counts. The four detailed-contract feeds are anomaly 405, attrition risk 430, forecast 72, and task 28,848; the other eight were checked against dictionary type/nullability and have no supplied allowed-value rules.

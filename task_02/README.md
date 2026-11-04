@@ -3,8 +3,8 @@
 Run these commands from the project root (with the project virtual environment active):
 
 ```powershell
-python .\task_1\etl.py
-python .\task_2\build_warehouse.py
+python .\task_01\etl.py
+python .\task_02\build_warehouse.py
 ```
 
 The warehouse builder creates dimensions and facts with primary keys in the `warehouse` schema. It writes row-count reconciliation and row-level orphan explanations to the `audit` schema in the project-root `pulseiq.duckdb`. All 12 facts reconcile by row count; the audit distinguishes four detailed-contract feeds from eight feeds checked using dictionary type/nullability only.

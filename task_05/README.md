@@ -5,9 +5,9 @@
 From the project root in PowerShell:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_4\create_metric_views.py
-.\.venv\Scripts\python.exe .\task_5\build_workforce_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_5\app.py
+.\.venv\Scripts\python.exe .\task_04\create_metric_views.py
+.\.venv\Scripts\python.exe .\task_05\build_workforce_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_05\app.py
 ```
 
 Streamlit opens the dashboard in your browser. Use the sidebar to filter department and month range. The second page, **CEO Questions**, lists the five questions and metric/privacy notes.
@@ -24,4 +24,4 @@ The current training data has unresolved Task 3 quality findings. Payroll is not
 
 ## Evidence
 
-Save a screenshot from the browser in `task_5/evidence/` after running the app. The five CEO questions and colour key are in `docs/ceo_questions.md`.
+Save a screenshot from the browser in `task_05/evidence/` after running the app. The five CEO questions and colour key are in `docs/ceo_questions.md`.
