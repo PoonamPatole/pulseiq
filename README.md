@@ -180,3 +180,80 @@ Builds budget and target metric views, then compares actuals with budget and KPI
 The report records the five task outcomes, validation checks, and analysis limitations. Task-level evidence and screenshots are kept under each `task_06` through `task_10` folder. The dashboards passed local AppTest smoke checks and Python compile checks, with numeric spot checks documented in the task evidence.
 
 Before using payroll results for decisions, complete Finance review of the documented differences and data-quality exceptions. For KPI and budget decisions, verify whether targets and budgets reflect the hiring freeze and current planning assumptions.
+
+## Phase 3
+
+Phase 3 adds five dashboards for P&L and expense analysis, receivables and cash flow, cross-department comparisons, AI anomaly and forecast signals, and an executive company-health scorecard. Tasks 11-15 reuse the DuckDB warehouse and add task-specific metric views, analysis, and evidence.
+
+- **Phase 3 report:** [PDF](DataAnalytics_PoonamSatishPatole_Phase3_Report_DRAFT.pdf) | [Markdown](DataAnalytics_PoonamSatishPatole_Phase3_Report_DRAFT.md)
+- **Task dashboards:** Tasks 11-15 build their metric views before their Streamlit apps are launched.
+- **Screenshots and evidence:** Each task's CSV checks, notes, and dashboard screenshots are under its `evidence/` folder.
+
+## Build and run the Phase 3 dashboards
+
+Run these commands from the project root in PowerShell. Build each task's metrics before starting its app:
+
+```powershell
+.\.venv\Scripts\python.exe .\task_11\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_11\app.py
+
+.\.venv\Scripts\python.exe .\task_12\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_12\app.py
+
+.\.venv\Scripts\python.exe .\task_13\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_13\app.py
+
+.\.venv\Scripts\python.exe .\task_14\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_14\app.py
+
+.\.venv\Scripts\python.exe .\task_15\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\task_15\app.py
+```
+
+Each Streamlit command starts one dashboard. Stop it with Ctrl+C before starting another.
+
+## The five Phase 3 tasks
+
+### Task 11 - P&L and expense analytics
+
+Builds a monthly P&L from active detail accounts and ties revenue, net profit, and operating margin to governed metrics M16-M18. Vendor-bill categories and vendors use amounts excluding GST and are shown separately from all ledger expenses.
+
+- Metric builder: [`task_11/build_metrics.py`](task_11/build_metrics.py)
+- Dashboard: [`task_11/app.py`](task_11/app.py)
+- Findings and monthly tie-out: [`task_11/evidence/findings.md`](task_11/evidence/findings.md)
+
+### Task 12 - Invoices, receivables, and cash flow
+
+Shows open receivables in four mutually exclusive ageing bands, payment timing, and invoice cash-in against paid expense cash-out. The bucket check confirms that ageing balances add to total open receivables.
+
+- Metric builder: [`task_12/build_metrics.py`](task_12/build_metrics.py)
+- Dashboard: [`task_12/app.py`](task_12/app.py)
+- Ageing bucket check: [`task_12/evidence/bucket_total_check.csv`](task_12/evidence/bucket_total_check.csv)
+
+### Task 13 - Cross-department impact
+
+Compares payroll, attendance, headcount, and allocated approved leave at department-month grain. Its 13 shared measures reconcile to PQ-13 after eight documented records are excluded from the comparison aggregate; source facts remain unchanged.
+
+- Metric builder: [`task_13/build_metrics.py`](task_13/build_metrics.py)
+- Dashboard: [`task_13/app.py`](task_13/app.py)
+- Comparison and difference notes: [`task_13/evidence/difference_notes.md`](task_13/evidence/difference_notes.md)
+
+### Task 14 - AI signals and forecasts
+
+Groups flagged anomaly signals for human review and compares company-level headcount and attrition forecasts with actuals. Current forecasts extend from October 2026 to March 2027, while actuals end in September 2026, so forecast error is not yet available.
+
+- Metric builder: [`task_14/build_metrics.py`](task_14/build_metrics.py)
+- Dashboard: [`task_14/app.py`](task_14/app.py)
+- Forecast error data and notes: [`task_14/evidence/forecast_error.csv`](task_14/evidence/forecast_error.csv), [`task_14/evidence/forecast_notes.md`](task_14/evidence/forecast_notes.md)
+
+### Task 15 - Executive company-health scorecard
+
+Presents eight governed company KPIs with monthly trends and supplied targets. Four KPIs have no numeric target in the source target table and are labelled without an inferred threshold.
+
+- Metric builder: [`task_15/build_metrics.py`](task_15/build_metrics.py)
+- Dashboard: [`task_15/app.py`](task_15/app.py)
+- KPI selection and rationale: [`task_15/evidence/kpi_selection.md`](task_15/evidence/kpi_selection.md)
+
+## Phase 3 evidence and outputs
+
+The report summarizes the task results, checks, and limitations. The task folders include supporting screenshots, CSV comparisons, and notes. Forecast errors remain unavailable until actual data arrives for the forecast months; anomaly exposure estimates are review signals, not confirmed losses.
