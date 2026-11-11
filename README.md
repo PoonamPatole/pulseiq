@@ -2,6 +2,8 @@
 
 ## <ins>Phase 1</ins>
 
+- **Phase 1 report:** [PDF](phase-1/DataAnalytics_PoonamSatishPatole_Phase1_Report_DRAFT.pdf) | [Updated Markdown](phase-1/DataAnalytics_PoonamSatishPatole_Phase1_Report_DRAFT_UPDATED.md)
+
 PulseIQ is a five-task data analytics project that loads source CSVs into DuckDB, validates data quality, builds a star-schema warehouse, creates governed metric views, and presents workforce metrics in a Streamlit dashboard.
 
 - **GitHub:** [PoonamPatole/pulseiq](https://github.com/PoonamPatole/pulseiq)
@@ -109,7 +111,7 @@ The supplied training data has unresolved Critical quality findings, including p
 
 Phase 2 extends the analytics work with five Streamlit dashboards for attendance and leave, attrition, team productivity, payroll reconciliation, and budget and KPI targets. Tasks 6-10 reuse the warehouse and add their own metric preparation, analysis, validation, and evidence.
 
-- **Phase 2 report:** [PDF](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.pdf) | [Markdown](DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.md)
+- **Phase 2 report:** [PDF](phase-2/DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.pdf) | [Markdown](phase-2/DataAnalytics_PoonamSatishPatole_Phase2_Report_DRAFT.md)
 - **Git tag:** `Phase-2`
 - **Task dashboards:** Tasks 6-9 read from the project DuckDB warehouse; Task 10 first builds its budget and target metric views.
 
@@ -185,7 +187,7 @@ Before using payroll results for decisions, complete Finance review of the docum
 
 Phase 3 adds five dashboards for P&L and expense analysis, receivables and cash flow, cross-department comparisons, AI anomaly and forecast signals, and an executive company-health scorecard. Tasks 11-15 reuse the DuckDB warehouse and add task-specific metric views, analysis, and evidence.
 
-- **Phase 3 report:** [PDF](DataAnalytics_PoonamSatishPatole_Phase3_Report_DRAFT.pdf) | [Markdown](DataAnalytics_PoonamSatishPatole_Phase3_Report_DRAFT.md)
+- **Phase 3 report:** [PDF](phase-3/DataAnalytics_PoonamSatishPatole_Phase3_Report_DRAFT.pdf) | [Markdown](phase-3/DataAnalytics_PoonamSatishPatole_Phase3_Report_DRAFT.md)
 - **Task dashboards:** Tasks 11-15 build their metric views before their Streamlit apps are launched.
 - **Screenshots and evidence:** Each task's CSV checks, notes, and dashboard screenshots are under its `evidence/` folder.
 
