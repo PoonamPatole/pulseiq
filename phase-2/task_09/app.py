@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-ROOT=Path(__file__).resolve().parent.parent
+ROOT=Path(__file__).resolve().parents[2]
 DB=ROOT/"pulseiq.duckdb"
 KEY=ROOT/"data/04_Validation_Vault/unlock_PQ-09_reconciliation_answer_key.csv"
 st.set_page_config(page_title="Task 9 | Payroll",layout="wide")

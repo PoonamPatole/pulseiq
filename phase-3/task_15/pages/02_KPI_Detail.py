@@ -4,7 +4,7 @@ import duckdb
 import pandas as pd
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parents[2]
+ROOT = Path(__file__).resolve().parents[3]
 DB = ROOT / "pulseiq.duckdb"
 st.set_page_config(page_title="Task 15 | KPI detail", layout="wide")
 
@@ -23,7 +23,7 @@ try:
         ORDER BY s.month
     """, [metric_id])
 except Exception as exc:
-    st.error(f"Build Task 15 metrics first: `python .\\task_15\\build_metrics.py`. {exc}")
+    st.error(f"Build Task 15 metrics first: `python .\\phase-3\\task_15\\build_metrics.py`. {exc}")
     st.stop()
 
 if details.empty:

@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 import streamlit as st
 from plotly.subplots import make_subplots
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "pulseiq.duckdb"
 st.set_page_config(page_title="Task 13 | Department impact", layout="wide")
 st.title("Task 13 | Cross-department impact")
@@ -25,7 +25,7 @@ try:
     summary = read("SELECT * FROM metrics.t13_reconciliation_summary")
     leave_quality = read("SELECT * FROM metrics.t13_leave_quality").iloc[0]
 except Exception as exc:
-    st.error(f"Build Task 13 metrics first: `python .\\task_13\\build_metrics.py`. {exc}")
+    st.error(f"Build Task 13 metrics first: `python .\\phase-3\\task_13\\build_metrics.py`. {exc}")
     st.stop()
 
 months = sorted(pd.to_datetime(data.month).dt.date.unique())

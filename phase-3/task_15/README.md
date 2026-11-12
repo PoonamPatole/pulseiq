@@ -3,8 +3,8 @@
 From the project root, build the governed scorecard view and launch the page:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_15\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_15\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_15\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_15\app.py
 ```
 
 Choose a month in the sidebar. Each KPI links to a detail page with its metric-view source, dictionary formula and monthly history. Use the browser print command (Ctrl+P) and choose A4 landscape; print styles hide the sidebar and Streamlit controls.

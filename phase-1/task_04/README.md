@@ -3,7 +3,7 @@
 Run from the project root after Tasks 1 and 2 have built the DuckDB database:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_04\create_metric_views.py
+.\.venv\Scripts\python.exe .\phase-1\task_04\create_metric_views.py
 ```
 
 This creates reusable views for the 28 supplied metrics plus M29, along with supporting aggregate views, in the `metrics` schema and `metrics.metric_catalog` in the project-root `pulseiq.duckdb`. Each metric view includes its date/team/department/account grouping columns and `metric_value`; the helper `group_size` is used to filter small groups and is not exposed in the final view.

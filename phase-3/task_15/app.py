@@ -4,7 +4,7 @@ import duckdb
 import pandas as pd
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "pulseiq.duckdb"
 DETAIL_PAGE = "pages/02_KPI_Detail.py"
 
@@ -44,7 +44,7 @@ def read_scorecard():
 try:
     scorecard = read_scorecard()
 except Exception as exc:
-    st.error(f"Build Task 15 metrics first: `python .\\task_15\\build_metrics.py`. {exc}")
+    st.error(f"Build Task 15 metrics first: `python .\\phase-3\\task_15\\build_metrics.py`. {exc}")
     st.stop()
 
 if scorecard.empty:

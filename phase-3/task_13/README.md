@@ -3,8 +3,8 @@
 Build the four-source department-month view and PQ-13 comparison, then launch the dashboard from the project root:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_13\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_13\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_13\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_13\app.py
 ```
 
 Payroll, attendance, and headcount are aggregated to department and month before joining. Approved leave is joined to `dim_employee` with `employee_key` so the department version for the request is respected. Multi-month leave is allocated by the share of working days in each month; its total stays equal to the recorded request days. One approved request has an end date before its start date; its recorded two days are retained in the start month and flagged for source review.

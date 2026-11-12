@@ -1,6 +1,6 @@
 """Validate the contract-backed feeds and write clean, quarantine, and audit tables.
 
-Run from the project root with: python .\\task_01\\etl.py
+Run from the project root with: python .\\phase-1\\task_01\\etl.py
 The provided data_contracts file defines contracts for fact_anomaly,
 fact_attrition_risk, fact_forecast, and fact_task only. Other raw fact tables
 remain untouched and are marked as row-count-only, not contract-validated.
@@ -20,7 +20,7 @@ import pandas as pd
 from dictionary_contracts import inferred_fact_contracts
 
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = Path(__file__).resolve().parents[2]
 DATA_DIR = PROJECT_DIR / "data" / "03_Data"
 CONTRACT_FILE = DATA_DIR / "csv" / "data_contracts.csv"
 DB_FILE = PROJECT_DIR / "pulseiq.duckdb"

@@ -3,8 +3,8 @@
 Build the finance aggregates, then launch the dashboard from the project root:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_11\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_11\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_11\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_11\app.py
 ```
 
 The P&L uses active, non-group Profit & Loss accounts from the ledger. Revenue is accounts 4001–4004, displayed as positive; interest income account 4900 is shown separately. Net profit is revenue plus other income less expenses, and operating margin is net profit divided by revenue, matching governed metric definitions. Expenses are debit-normal. Group headings are excluded so a parent and its detail accounts are never counted together.

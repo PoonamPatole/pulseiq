@@ -36,12 +36,12 @@ If `.venv` already exists, skip the first command. All commands below use its Py
 Run these from the project root, in order:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_01\etl.py
-.\.venv\Scripts\python.exe .\task_01\check_row_counts.py
-.\.venv\Scripts\python.exe .\task_02\build_warehouse.py
-.\.venv\Scripts\python.exe .\task_04\create_metric_views.py
-.\.venv\Scripts\python.exe .\task_05\build_workforce_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_05\app.py
+.\.venv\Scripts\python.exe .\phase-1\task_01\etl.py
+.\.venv\Scripts\python.exe .\phase-1\task_01\check_row_counts.py
+.\.venv\Scripts\python.exe .\phase-1\task_02\build_warehouse.py
+.\.venv\Scripts\python.exe .\phase-1\task_04\create_metric_views.py
+.\.venv\Scripts\python.exe .\phase-1\task_05\build_workforce_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-1\task_05\app.py
 ```
 
 Run the ETL before the row-count check because the check reads tables from the local DuckDB database. The Task 1 ETL currently finds five Critical data-quality checks and may exit with code 1 after it has written the load and audit results. This is the gate's expected response for the supplied data. Review `audit.dq_results`; when running the training dashboard, continue with Tasks 2–5 while treating affected metrics as provisional.
@@ -54,49 +54,49 @@ Streamlit opens the **Workforce and headcount** dashboard in a browser. Use its 
 
 Loads the CSV feeds into the DuckDB `raw` schema, applies supplied contracts and dictionary type/nullability checks, and writes clean, quarantine, summary, and load-log tables. Detailed business rules are supplied for four feeds; unsupported rules are not invented for the others.
 
-- Main code: [`task_01/etl.py`](task_01/etl.py)
-- Count check: [`task_01/check_row_counts.py`](task_01/check_row_counts.py)
-- Rerun verification: [`task_01/verify_rerun.py`](task_01/verify_rerun.py)
-- Results: [`task_01/evidence/current_run.md`](task_01/evidence/current_run.md)
+- Main code: [`phase-1/task_01/etl.py`](phase-1/task_01/etl.py)
+- Count check: [`phase-1/task_01/check_row_counts.py`](phase-1/task_01/check_row_counts.py)
+- Rerun verification: [`phase-1/task_01/verify_rerun.py`](phase-1/task_01/verify_rerun.py)
+- Results: [`phase-1/task_01/evidence/current_run.md`](phase-1/task_01/evidence/current_run.md)
 
 ### Task 2 — Star-schema warehouse
 
 Builds warehouse dimensions and facts with keys, then records row-count reconciliation and relationship exceptions in the `audit` schema.
 
-- Main code: [`task_02/build_warehouse.py`](task_02/build_warehouse.py)
-- Schema and join guide: [`task_02/docs/star_schema.md`](task_02/docs/star_schema.md)
-- Reconciliation: [`task_02/evidence/reconciliation.md`](task_02/evidence/reconciliation.md)
+- Main code: [`phase-1/task_02/build_warehouse.py`](phase-1/task_02/build_warehouse.py)
+- Schema and join guide: [`phase-1/task_02/docs/star_schema.md`](phase-1/task_02/docs/star_schema.md)
+- Reconciliation: [`phase-1/task_02/evidence/reconciliation.md`](phase-1/task_02/evidence/reconciliation.md)
 
 ### Task 3 — Data-quality gatekeeper
 
 Runs 14 quality checks and records results in `audit.dq_results`. Critical findings fail the gate after the results have been saved; warnings are recorded without stopping the load. The scratch-only self-test injects sample defects to check that the rules detect them.
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_03\dq_gatekeeper.py --self-test
+.\.venv\Scripts\python.exe .\phase-1\task_03\dq_gatekeeper.py --self-test
 ```
 
-- Main code: [`task_03/dq_gatekeeper.py`](task_03/dq_gatekeeper.py)
-- Check explanations: [`task_03/docs/check_explanations.md`](task_03/docs/check_explanations.md)
+- Main code: [`phase-1/task_03/dq_gatekeeper.py`](phase-1/task_03/dq_gatekeeper.py)
+- Check explanations: [`phase-1/task_03/docs/check_explanations.md`](phase-1/task_03/docs/check_explanations.md)
 - Current data includes Critical findings; check the latest `audit.dq_results` before treating downstream metrics as production-ready.
 
 ### Task 4 — Governed metric layer
 
 Creates views for the 28 supplied metrics plus M29 in the DuckDB `metrics` schema. The views document formulas, grain, caveats, and minimum group thresholds; small groups are suppressed.
 
-- Main code: [`task_04/create_metric_views.py`](task_04/create_metric_views.py)
-- Calculation decisions: [`task_04/docs/metric_decisions.md`](task_04/docs/metric_decisions.md)
-- Hand checks: [`task_04/docs/hand_checks.md`](task_04/docs/hand_checks.md)
+- Main code: [`phase-1/task_04/create_metric_views.py`](phase-1/task_04/create_metric_views.py)
+- Calculation decisions: [`phase-1/task_04/docs/metric_decisions.md`](phase-1/task_04/docs/metric_decisions.md)
+- Hand checks: [`phase-1/task_04/docs/hand_checks.md`](phase-1/task_04/docs/hand_checks.md)
 - M28 forecast error remains `NULL` with `NO_ACTUALS_YET` where no actual headcount is available for the forecast month.
 
 ### Task 5 — Workforce and headcount dashboard
 
 Creates dashboard-safe aggregate views and serves a Streamlit app. The Workforce page has period-end headcount, period change, average headcount, M29 month-over-month growth, a trend chart, and department, city-tier, and work-mode comparisons. It reads `metrics.*` views and suppresses groups below the configured threshold. The second page lists the CEO questions and metric/privacy notes.
 
-- Dashboard: [`task_05/app.py`](task_05/app.py)
-- Dashboard metric setup: [`task_05/build_workforce_metrics.py`](task_05/build_workforce_metrics.py)
-- CEO questions: [`task_05/pages/02_CEO_Questions.py`](task_05/pages/02_CEO_Questions.py)
-- Validation and screenshots: [`task_05/evidence/`](task_05/evidence/)
-- M29 definition and hand calculation: [`task_05/docs/mini_challenge.md`](task_05/docs/mini_challenge.md)
+- Dashboard: [`phase-1/task_05/app.py`](phase-1/task_05/app.py)
+- Dashboard metric setup: [`phase-1/task_05/build_workforce_metrics.py`](phase-1/task_05/build_workforce_metrics.py)
+- CEO questions: [`phase-1/task_05/pages/02_CEO_Questions.py`](phase-1/task_05/pages/02_CEO_Questions.py)
+- Validation and screenshots: [`phase-1/task_05/evidence/`](phase-1/task_05/evidence/)
+- M29 definition and hand calculation: [`phase-1/task_05/docs/mini_challenge.md`](phase-1/task_05/docs/mini_challenge.md)
 
 ## Data and outputs
 
@@ -124,12 +124,12 @@ Use the Python environment and dependencies described in Phase 1. From the proje
 Run these from the project root in PowerShell, in order:
 
 ```powershell
-.\.venv\Scripts\python.exe -m streamlit run .\task_06\app.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_07\app.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_08\app.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_09\app.py
-.\.venv\Scripts\python.exe .\task_10\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_10\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_06\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_07\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_08\app.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_09\app.py
+.\.venv\Scripts\python.exe .\phase-2\task_10\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_10\app.py
 ```
 
 Each Streamlit command starts one dashboard. Run the Task 10 builder after the Phase 1 warehouse is ready and before launching the Task 10 app.
@@ -140,42 +140,42 @@ Each Streamlit command starts one dashboard. Run the Task 10 builder after the P
 
 Shows attendance rate, late arrivals, overtime, approved leave, and holiday context. Attendance follows the M13 calculation, including half-day adjustments. Leave is shown company-wide because the leave fact has no department key; holidays provide context but do not establish a cause for attendance changes.
 
-- Dashboard: [`task_06/app.py`](task_06/app.py)
-- Findings: [`task_06/evidence/insights.md`](task_06/evidence/insights.md)
-- Dashboard notes: [`task_06/README.md`](task_06/README.md)
+- Dashboard: [`phase-2/task_06/app.py`](phase-2/task_06/app.py)
+- Findings: [`phase-2/task_06/evidence/insights.md`](phase-2/task_06/evidence/insights.md)
+- Dashboard notes: [`phase-2/task_06/README.md`](phase-2/task_06/README.md)
 
 ### Task 7 - Attrition analytics
 
 Separates actual exits and voluntary exits from grouped predicted risk. Tenure uses the employee SCD version valid on the exit date. Risk groups and tenure summaries are suppressed below five people or exits to protect privacy; individual risk scores are not shown.
 
-- Dashboard: [`task_07/app.py`](task_07/app.py)
-- Findings: [`task_07/evidence/findings.md`](task_07/evidence/findings.md)
-- Dashboard notes: [`task_07/README.md`](task_07/README.md)
+- Dashboard: [`phase-2/task_07/app.py`](phase-2/task_07/app.py)
+- Findings: [`phase-2/task_07/evidence/findings.md`](phase-2/task_07/evidence/findings.md)
+- Dashboard notes: [`phase-2/task_07/README.md`](phase-2/task_07/README.md)
 
 ### Task 8 - Team productivity
 
 Summarizes task delivery by team and sprint, with completed work, velocity, cycle time, blocked tasks, and reopened items. Cancelled tasks are excluded from active completion denominators. Interpret velocity with team size, sprint length, and work type rather than as a standalone team health score.
 
-- Dashboard: [`task_08/app.py`](task_08/app.py)
-- Manual verification: [`task_08/evidence/verification.md`](task_08/evidence/verification.md)
-- Dashboard notes: [`task_08/README.md`](task_08/README.md)
+- Dashboard: [`phase-2/task_08/app.py`](phase-2/task_08/app.py)
+- Manual verification: [`phase-2/task_08/evidence/verification.md`](phase-2/task_08/evidence/verification.md)
+- Dashboard notes: [`phase-2/task_08/README.md`](phase-2/task_08/README.md)
 
 ### Task 9 - Payroll cost and reconciliation
 
 Reports gross pay, net pay, employer cost, cost per employee, and monthly reconciliation against the supplied company-level answer key. Company totals do not validate department allocations. Payroll figures remain provisional pending Finance review: documented issues include duplicate employee/run rows, unmatched employee IDs, and five monthly differences. Source rows are preserved until Finance confirms any corrections.
 
-- Dashboard: [`task_09/app.py`](task_09/app.py)
-- Reconciliation notes: [`task_09/evidence/exclusions.md`](task_09/evidence/exclusions.md)
-- Dashboard notes: [`task_09/README.md`](task_09/README.md)
+- Dashboard: [`phase-2/task_09/app.py`](phase-2/task_09/app.py)
+- Reconciliation notes: [`phase-2/task_09/evidence/exclusions.md`](phase-2/task_09/evidence/exclusions.md)
+- Dashboard notes: [`phase-2/task_09/README.md`](phase-2/task_09/README.md)
 
 ### Task 10 - Budget and KPI targets
 
 Builds budget and target metric views, then compares actuals with budget and KPI thresholds. Positive budget variance means overspend; percentage variance is divided by budget. Department actuals are shown only for groups with at least five employees. KPI status follows the supplied threshold direction, and missing values are labelled No data.
 
-- Metric builder: [`task_10/build_metrics.py`](task_10/build_metrics.py)
-- Dashboard: [`task_10/app.py`](task_10/app.py)
-- Manual verification: [`task_10/evidence/verification.md`](task_10/evidence/verification.md)
-- Dashboard notes: [`task_10/README.md`](task_10/README.md)
+- Metric builder: [`phase-2/task_10/build_metrics.py`](phase-2/task_10/build_metrics.py)
+- Dashboard: [`phase-2/task_10/app.py`](phase-2/task_10/app.py)
+- Manual verification: [`phase-2/task_10/evidence/verification.md`](phase-2/task_10/evidence/verification.md)
+- Dashboard notes: [`phase-2/task_10/README.md`](phase-2/task_10/README.md)
 
 ## Phase 2 evidence and outputs
 
@@ -196,20 +196,20 @@ Phase 3 adds five dashboards for P&L and expense analysis, receivables and cash 
 Run these commands from the project root in PowerShell. Build each task's metrics before starting its app:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_11\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_11\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_11\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_11\app.py
 
-.\.venv\Scripts\python.exe .\task_12\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_12\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_12\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_12\app.py
 
-.\.venv\Scripts\python.exe .\task_13\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_13\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_13\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_13\app.py
 
-.\.venv\Scripts\python.exe .\task_14\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_14\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_14\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_14\app.py
 
-.\.venv\Scripts\python.exe .\task_15\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_15\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_15\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_15\app.py
 ```
 
 Each Streamlit command starts one dashboard. Stop it with Ctrl+C before starting another.
@@ -220,41 +220,41 @@ Each Streamlit command starts one dashboard. Stop it with Ctrl+C before starting
 
 Builds a monthly P&L from active detail accounts and ties revenue, net profit, and operating margin to governed metrics M16-M18. Vendor-bill categories and vendors use amounts excluding GST and are shown separately from all ledger expenses.
 
-- Metric builder: [`task_11/build_metrics.py`](task_11/build_metrics.py)
-- Dashboard: [`task_11/app.py`](task_11/app.py)
-- Findings and monthly tie-out: [`task_11/evidence/findings.md`](task_11/evidence/findings.md)
+- Metric builder: [`phase-3/task_11/build_metrics.py`](phase-3/task_11/build_metrics.py)
+- Dashboard: [`phase-3/task_11/app.py`](phase-3/task_11/app.py)
+- Findings and monthly tie-out: [`phase-3/task_11/evidence/findings.md`](phase-3/task_11/evidence/findings.md)
 
 ### Task 12 - Invoices, receivables, and cash flow
 
 Shows open receivables in four mutually exclusive ageing bands, payment timing, and invoice cash-in against paid expense cash-out. The bucket check confirms that ageing balances add to total open receivables.
 
-- Metric builder: [`task_12/build_metrics.py`](task_12/build_metrics.py)
-- Dashboard: [`task_12/app.py`](task_12/app.py)
-- Ageing bucket check: [`task_12/evidence/bucket_total_check.csv`](task_12/evidence/bucket_total_check.csv)
+- Metric builder: [`phase-3/task_12/build_metrics.py`](phase-3/task_12/build_metrics.py)
+- Dashboard: [`phase-3/task_12/app.py`](phase-3/task_12/app.py)
+- Ageing bucket check: [`phase-3/task_12/evidence/bucket_total_check.csv`](phase-3/task_12/evidence/bucket_total_check.csv)
 
 ### Task 13 - Cross-department impact
 
 Compares payroll, attendance, headcount, and allocated approved leave at department-month grain. Its 13 shared measures reconcile to PQ-13 after eight documented records are excluded from the comparison aggregate; source facts remain unchanged.
 
-- Metric builder: [`task_13/build_metrics.py`](task_13/build_metrics.py)
-- Dashboard: [`task_13/app.py`](task_13/app.py)
-- Comparison and difference notes: [`task_13/evidence/difference_notes.md`](task_13/evidence/difference_notes.md)
+- Metric builder: [`phase-3/task_13/build_metrics.py`](phase-3/task_13/build_metrics.py)
+- Dashboard: [`phase-3/task_13/app.py`](phase-3/task_13/app.py)
+- Comparison and difference notes: [`phase-3/task_13/evidence/difference_notes.md`](phase-3/task_13/evidence/difference_notes.md)
 
 ### Task 14 - AI signals and forecasts
 
 Groups flagged anomaly signals for human review and compares company-level headcount and attrition forecasts with actuals. Current forecasts extend from October 2026 to March 2027, while actuals end in September 2026, so forecast error is not yet available.
 
-- Metric builder: [`task_14/build_metrics.py`](task_14/build_metrics.py)
-- Dashboard: [`task_14/app.py`](task_14/app.py)
-- Forecast error data and notes: [`task_14/evidence/forecast_error.csv`](task_14/evidence/forecast_error.csv), [`task_14/evidence/forecast_notes.md`](task_14/evidence/forecast_notes.md)
+- Metric builder: [`phase-3/task_14/build_metrics.py`](phase-3/task_14/build_metrics.py)
+- Dashboard: [`phase-3/task_14/app.py`](phase-3/task_14/app.py)
+- Forecast error data and notes: [`phase-3/task_14/evidence/forecast_error.csv`](phase-3/task_14/evidence/forecast_error.csv), [`phase-3/task_14/evidence/forecast_notes.md`](phase-3/task_14/evidence/forecast_notes.md)
 
 ### Task 15 - Executive company-health scorecard
 
 Presents eight governed company KPIs with monthly trends and supplied targets. Four KPIs have no numeric target in the source target table and are labelled without an inferred threshold.
 
-- Metric builder: [`task_15/build_metrics.py`](task_15/build_metrics.py)
-- Dashboard: [`task_15/app.py`](task_15/app.py)
-- KPI selection and rationale: [`task_15/evidence/kpi_selection.md`](task_15/evidence/kpi_selection.md)
+- Metric builder: [`phase-3/task_15/build_metrics.py`](phase-3/task_15/build_metrics.py)
+- Dashboard: [`phase-3/task_15/app.py`](phase-3/task_15/app.py)
+- KPI selection and rationale: [`phase-3/task_15/evidence/kpi_selection.md`](phase-3/task_15/evidence/kpi_selection.md)
 
 ## Phase 3 evidence and outputs
 

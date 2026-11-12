@@ -8,7 +8,7 @@ from pathlib import Path
 import duckdb
 
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = Path(__file__).resolve().parents[2]
 DB_FILE = PROJECT_DIR / "pulseiq.duckdb"
 
 DIMENSIONS = {

@@ -8,7 +8,7 @@ import plotly.express as px
 import streamlit as st
 
 
-PROJECT_DIR = Path(__file__).resolve().parent.parent
+PROJECT_DIR = Path(__file__).resolve().parents[2]
 DB_FILE = PROJECT_DIR / "pulseiq.duckdb"
 NAVY = "#1F4E79"  # headcount and workforce size
 TEAL = "#2A9D8F"  # workforce composition
@@ -47,7 +47,7 @@ try:
         st.stop()
 except Exception as exc:
     st.error(f"Could not read workforce metric views: {exc}")
-    st.info("From the project root, run the Task 4 metric builder and then `python .\\task_05\\build_workforce_metrics.py`.")
+    st.info("From the project root, run the Task 4 metric builder and then `python .\\phase-1\\task_05\\build_workforce_metrics.py`.")
     st.stop()
 
 months = pd.to_datetime(available_months["month_start_date"]).dt.date.tolist()

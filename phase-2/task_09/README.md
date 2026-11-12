@@ -1,6 +1,6 @@
 # Task 9 — Payroll cost and reconciliation
 
-Run: `..\.venv\Scripts\python.exe -m streamlit run .\task_09\app.py`.
+Run: `.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_09\app.py`.
 
 Gross, net, employer cost and cost per employee use governed M07–M10 views, which suppress groups below the metric threshold. The monthly reconciliation uses the supplied PQ-09 company-level answer key and displays the variance to that key. It does not claim that company totals prove department allocation accuracy.
 

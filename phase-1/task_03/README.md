@@ -5,13 +5,13 @@
 From the project root, load the feeds. Task 1 now records a successful-load timestamp and runs all 14 quality checks automatically:
 
 ```powershell
-python .\task_01\etl.py
+python .\phase-1\task_01\etl.py
 ```
 
 To prove the checks detect defects, run the scratch-only tests:
 
 ```powershell
-python .\task_03\dq_gatekeeper.py --self-test
+python .\phase-1\task_03\dq_gatekeeper.py --self-test
 ```
 
 The tests clone source tables into a temporary `scratch` schema, inject one defect per check, verify that the bad-row count increases, and drop the scratch schema. They do not edit the raw or warehouse source tables.

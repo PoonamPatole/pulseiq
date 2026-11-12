@@ -2,7 +2,7 @@
 from pathlib import Path
 import duckdb
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "pulseiq.duckdb"
 REFERENCE = ROOT / "data" / "04_Validation_Vault" / "unlock_PQ-13_reference_summary_dept_month.csv"
 

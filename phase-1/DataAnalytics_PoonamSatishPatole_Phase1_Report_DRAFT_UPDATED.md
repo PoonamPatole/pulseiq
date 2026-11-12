@@ -13,7 +13,7 @@
 |---|---|---|
 | 1. ETL and data contracts | Complete locally; detailed rules apply to four feeds, and the dictionary supplies type/null checks for all remaining fact columns. | [Current ETL results](task_01/evidence/current_run.md); [contract notes](task_01/contract_notes.md) |
 | 2. Star-schema warehouse | Complete locally; all 12 fact row counts reconcile and 261 relationship exceptions are documented. | [Star schema and audit notes](task_02/docs/star_schema.md); [reconciliation results](task_02/evidence/reconciliation.md) |
-| 3. Data-quality gatekeeper | Complete locally; all 14 checks run, each test detects an injected defect, and 11 of 11 planted issue categories were detected. | [DQ issue comparison](task_03/docs/missed_issues.md); run `python .\task_03\dq_gatekeeper.py --self-test` |
+| 3. Data-quality gatekeeper | Complete locally; all 14 checks run, each test detects an injected defect, and 11 of 11 planted issue categories were detected. | [DQ issue comparison](task_03/docs/missed_issues.md); run `python .\phase-1\task_03\dq_gatekeeper.py --self-test` |
 | 4. Governed metric layer | Complete locally; 28 supplied metrics, M29, catalog, privacy thresholds, and five hand checks are documented. | [Hand checks](task_04/docs/hand_checks.md); [metric decisions](task_04/docs/metric_decisions.md) |
 | 5. Workforce dashboard | Complete locally; app test passes and screenshots show the KPI cards, M29, trend, department/location charts, and full work-mode chart. | [App validation](task_05/evidence/app_validation.md); screenshots in `task_05/evidence/`; [CEO questions](task_05/pages/02_CEO_Questions.py) |
 

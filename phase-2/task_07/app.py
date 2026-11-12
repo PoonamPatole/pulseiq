@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-DB=Path(__file__).resolve().parent.parent/"pulseiq.duckdb"
+DB=Path(__file__).resolve().parents[2]/"pulseiq.duckdb"
 st.set_page_config(page_title="Task 7 | Attrition",layout="wide")
 st.title("Task 7 | Attrition analytics")
 st.caption("Actual exits and modelled risk are separate measures. No person-level risk is shown.")

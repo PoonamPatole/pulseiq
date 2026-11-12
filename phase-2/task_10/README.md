@@ -1,6 +1,6 @@
 # Task 10 — Budget and KPI targets
 
-First run `..\.venv\Scripts\python.exe .\task_10\build_metrics.py`, then run `..\.venv\Scripts\python.exe -m streamlit run .\task_10\app.py`.
+First run `.\.venv\Scripts\python.exe .\phase-2\task_10\build_metrics.py`, then run `.\.venv\Scripts\python.exe -m streamlit run .\phase-2\task_10\app.py`.
 
 The builder copies the supplied raw budget and targets into the warehouse and creates aggregated metric views. Positive budget variance means overspend; percentage variance is variance divided by budget. Department actuals are shown only for groups of at least five employees.
 

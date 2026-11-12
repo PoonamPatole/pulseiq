@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-DB=Path(__file__).resolve().parent.parent/"pulseiq.duckdb"
+DB=Path(__file__).resolve().parents[2]/"pulseiq.duckdb"
 st.set_page_config(page_title="Task 8 | Teams",layout="wide")
 st.title("Task 8 | Team productivity")
 st.markdown("**Rules:** velocity = completed story points; cycle time = mean nonnegative days for completed tasks; on-time = on-time completions / completions. Cancelled tasks are excluded from completion rate; velocity and cycle time only include completed tasks.")

@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "pulseiq.duckdb"
 st.set_page_config(page_title="Task 11 | P&L and expenses", layout="wide")
 st.title("Task 11 | Profit and loss and expense analytics")
@@ -24,7 +24,7 @@ try:
     vendors = read("SELECT * FROM metrics.t11_vendor_spend ORDER BY month, expense_amount DESC")
     tieout = read("SELECT * FROM metrics.t11_tieout ORDER BY month")
 except Exception as exc:
-    st.error(f"Build Task 11 metrics first: `python .\\task_11\\build_metrics.py`. {exc}")
+    st.error(f"Build Task 11 metrics first: `python .\\phase-3\\task_11\\build_metrics.py`. {exc}")
     st.stop()
 
 months = sorted(pd.to_datetime(pl.month).dt.date.unique())

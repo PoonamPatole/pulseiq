@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "pulseiq.duckdb"
 st.set_page_config(page_title="Task 14 | AI signals", layout="wide")
 st.title("Task 14 | AI signals")
@@ -23,7 +23,7 @@ try:
     forecasts = read("SELECT * FROM metrics.t14_forecast_accuracy ORDER BY metric, month")
     actuals = read("SELECT * FROM metrics.t14_actuals ORDER BY metric, month")
 except Exception as exc:
-    st.error(f"Build Task 14 metrics first: `python .\\task_14\\build_metrics.py`. {exc}")
+    st.error(f"Build Task 14 metrics first: `python .\\phase-3\\task_14\\build_metrics.py`. {exc}")
     st.stop()
 
 st.subheader("Flagged anomalies by type and estimated money at risk")

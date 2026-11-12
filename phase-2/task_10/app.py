@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-ROOT=Path(__file__).resolve().parent.parent
+ROOT=Path(__file__).resolve().parents[2]
 DB=ROOT/"pulseiq.duckdb"
 st.set_page_config(page_title="Task 10 | Budget and KPIs",layout="wide")
 st.title("Task 10 | Budget versus actual and KPI targets")
@@ -16,7 +16,7 @@ def read(sql):
 try:
  budget=read("SELECT * FROM metrics.t10_budget_variance ORDER BY month,department_id")
  score=read("SELECT * FROM metrics.t10_kpi_scorecard ORDER BY month,department_id")
-except Exception as e: st.error(f"Run `python .\\task_10\\build_metrics.py` after Tasks 1–4. {e}"); st.stop()
+except Exception as e: st.error(f"Run `python .\\phase-2\\task_10\\build_metrics.py` after Tasks 1–4. {e}"); st.stop()
 depts=sorted(budget.department_name.dropna().unique())
 sel=st.sidebar.selectbox("Department",["All reportable departments",*depts])
 shown=budget if sel=="All reportable departments" else budget[budget.department_name==sel]

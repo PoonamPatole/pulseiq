@@ -3,8 +3,8 @@
 Build the Task 14 views and open the dashboard from the project root:
 
 ```powershell
-.\.venv\Scripts\python.exe .\task_14\build_metrics.py
-.\.venv\Scripts\python.exe -m streamlit run .\task_14\app.py
+.\.venv\Scripts\python.exe .\phase-3\task_14\build_metrics.py
+.\.venv\Scripts\python.exe -m streamlit run .\phase-3\task_14\app.py
 ```
 
 Anomaly exposures are grouped by `reason_code`; only rows with `flagged='Y'` are included. The anomaly contract says attendance rows do not have `money_at_risk`, so they are shown as unquantified rather than treated as zero exposure. The page shows the highest-exposure types first and labels model output for human review.

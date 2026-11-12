@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
 DB = ROOT / "pulseiq.duckdb"
 st.set_page_config(page_title="Task 12 | Receivables and cash", layout="wide")
 st.title("Task 12 | Invoices, receivables, and cash flow")
@@ -26,7 +26,7 @@ try:
     overdue = read("SELECT * FROM metrics.t12_overdue_clients ORDER BY overdue_balance DESC")
     client_days = read("SELECT * FROM metrics.t12_client_days_to_pay ORDER BY average_days_to_pay DESC")
 except Exception as exc:
-    st.error(f"Build Task 12 metrics first: `python .\\task_12\\build_metrics.py`. {exc}")
+    st.error(f"Build Task 12 metrics first: `python .\\phase-3\\task_12\\build_metrics.py`. {exc}")
     st.stop()
 
 cols = st.columns(3)

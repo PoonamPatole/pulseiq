@@ -5,7 +5,7 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-DB = Path(__file__).resolve().parent.parent / "pulseiq.duckdb"
+DB = Path(__file__).resolve().parents[2] / "pulseiq.duckdb"
 st.set_page_config(page_title="Task 6 | Attendance", layout="wide")
 st.title("Task 6 | Attendance and leave")
 st.caption("Monthly rates use recorded scheduled workdays as the denominator.")
